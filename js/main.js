@@ -18,13 +18,11 @@ function loadCat(){
     fetch(catUtl)
         .then(response => response.json())
         .then(output => {
-            // console.log(output.categories);
             buttonContainer.innerHTML = `
                 <button id="cat-button-0" onclick="loadItems('all')" class="active font-light text-[#1F2937] hover:cursor-pointer w-[200px] text-left p-1.5 rounded-md hover:bg-[#15803D] hover:text-white active:bg-[#15803D]">All Trees</button>
             `;
 
             for(let i = 0; i < output.categories.length; i++){
-                // console.log(output.categories[i].category_name)
                 buttonContainer.innerHTML += `
                     <button id="cat-button-${output.categories[i].id}" onclick="chosenCat('${output.categories[i].category_name}')" class="font-light text-[#1F2937] hover:cursor-pointer w-[200px] text-left p-1.5 rounded-md hover:bg-[#15803D] hover:text-white active:bg-[#15803D]">${output.categories[i].category_name}</button>
                 `;
@@ -75,7 +73,6 @@ function chosenCat(cat){
 }
 
 function makeBtnActive(buttonName){
-    // let activeButton = document.getElementById(buttonName);
     const catUtl = "https://openapi.programming-hero.com/api/categories";
 
     console.log(buttonName);
@@ -89,7 +86,6 @@ function makeBtnActive(buttonName){
             .then(output => {
                 for(let i = 0; i < output.categories.length; i++)
                     if(output.categories[i].category_name === buttonName){
-                        // console.log(buttonName)
                         let catButton = document.getElementById(`cat-button-${i+1}`);
                         catButton.classList.add("active");
 
@@ -109,11 +105,9 @@ function loadItems(buttonName){
     fetch(itemsUrl)
         .then(response => response.json())
         .then(output => {
-            // console.log(output.plants);
             itemsContainer.innerHTML = "";
 
             for(let i = 0; i < output.plants.length; i++){
-                // console.log(output.plants[i].name)
                 itemsContainer.innerHTML += `
                     <div class="card bg-base-100 w-96  pt-4 shadow-sm">
                         <figure class="p-4 mb-2 max-h-[200px]">
@@ -150,9 +144,7 @@ function addToCart(cartId){
         .then(response => response.json())
         .then(output => {
             for(let i = 0; i < output.plants.length; i++){
-                // console.log("current id:", output.plants[i])
                 if(output.plants[i].id === cartId){
-                    // console.log(output.plants[i].name , "\n", output.plants[i].price)
                     cartContainer.innerHTML += `
                         <div id="item-${cartId}" class="single-cart w-full flex flex-row justify-between rounded-lg items-center bg-[#F0FDF4] px-5 py-3">
                             <div class="left flex-1">
@@ -180,7 +172,6 @@ function removeItem(cartId){
     const itemsUrl = "https://openapi.programming-hero.com/api/plants";
     let cartContainer = document.getElementById("cart-details");
     let totalCart = document.getElementById("total-cart-amount");
-    // console.log("Cart Id:", cartId);
 
     fetch(itemsUrl)
         .then(response => response.json())
@@ -188,25 +179,9 @@ function removeItem(cartId){
             let deleteItem = document.getElementById(`item-${cartId}`)
             deleteItem.remove();
             for(let i = 0; i < output.plants.length; i++){
-                // console.log("current id:", output.plants[i])
                 if(output.plants[i].id === cartId){
-                    // console.log(output.plants[i].name , "\n", output.plants[i].price)
-                    // cartContainer.innerHTML += `
-                    //     <div class="single-cart w-full flex flex-row justify-between rounded-lg items-center bg-[#F0FDF4] px-5 py-3">
-                    //         <div class="left flex-1">
-                    //             <h3 class="font-semibold ">${output.plants[i].name}</h3>
-                    //             <p class="text-[#1f29378a]">৳${output.plants[i].price} <i class="fa-solid fa-xmark text-sm"></i> 1 </p>
-                    //         </div>
-                    //         <div class="right text-right text-[#1f29378a]">
-                    //             <button onclick="removeItem(${cartId})" class="hover:cursor-pointer"><i class="fa-solid fa-xmark text-sm"></i></button>
-                    //         </div>
-                    //     </div>
-                    // `;
-
                     currentCurtAmount -= output.plants[i].price;
-
                     totalCart.innerText = `৳${currentCurtAmount}`;
-
                 }
 
             }
@@ -229,15 +204,11 @@ function loadModal(id){
 
     fetch(itemsUrl)
         .then(response => response.json())
-        .then(output => {
-            // console.log(output.plants);
+        .then(output => {;
             modalContainer.innerHTML = "";
 
             for(let i = 0; i < output.plants.length; i++){
-                // console.log(output.plants[i].name)
                 if(output.plants[i].id === id){
-                    // console.log(output.plants[i].id)
-                    // console.log(output.plants[i].name)
                     modalContainer.innerHTML += `
                     <div class="modal-box">
                         <figure class="p-4 mb-2 max-h-[400px] flex justify-center items-center overflow-hidden">
@@ -266,5 +237,5 @@ function loadModal(id){
 
 }
 
-loadItems();
+// loadItems();
 loadCat();

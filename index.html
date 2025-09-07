@@ -69,13 +69,13 @@
         </div>
     </section>
 
-    <section class="shop-area mx-auto max-w-[1920px] mt-20 px-10">
-        <h2 class="text-2xl text-[#1F2937] font-bold text-center">Choose Your Trees</h2>
+    <section class="shop-area mt-20 px-10">
+        <h2 class="text-3xl text-[#1F2937] font-bold text-center">Choose Your Trees</h2>
 
-        <div class="shop-options flex flex-row gap-10 mt-5">
+        <div class="shop-options flex flex-row gap-10 mt-5 justify-center">
             <div class="shop-catagories">
                 <h3 class="text-xl text-[#1F2937] font-semibold mb-3.5">Categories</h3>
-                <div id="categories-btn" class=" flex flex-col w-[300px] items-start gap-2">
+                <div id="categories-btn" class=" flex flex-col w-[210px] items-start gap-2">
                     <!-- <button class="font-light text-[#1F2937] hover:cursor-pointer w-[200px] text-left p-1.5 rounded-md hover:bg-[#15803D] hover:text-white">All Trees</button> -->
 
                     <button id="cat-button-0" onclick="loadItems()" class="font-light text-[#1F2937] hover:cursor-pointer w-[200px] text-left p-1.5 rounded-md hover:bg-[#15803D] hover:text-white active:bg-[#15803D]">All Trees</button>
@@ -104,7 +104,7 @@
             </div>
 
 
-            <div class="shop-catagories bg-white flex-1 rounded-xl p-4">
+            <div class="shop-catagories bg-white w-[250px] rounded-xl p-4">
                 <h3 class="text-xl text-[#1F2937] font-semibold mb-3.5">Your Cart</h3>
                 <div id="cart-details" class=" flex flex-col items-start gap-2">
                     <!-- <div class="single-cart w-full flex flex-row justify-between rounded-lg items-center bg-[#F0FDF4] px-5 py-3">
@@ -119,7 +119,7 @@
 
                     
                 </div>
-                <div class="total-cart">
+                <div class="total-cart h-fit">
                     <div class="line h-[1.5px] mt-5 w-full bg-gray-200"></div>
                     <div class="details flex flex-row justify-between items-center mt-2">
                         <p>Total: </p>
@@ -131,16 +131,52 @@
 
 
         <div class="modal">
-            <!-- Open the modal using ID.showModal() method -->
-            <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
             <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
 
             </dialog>
         </div>
         
-
     </section>
 
+    <section class="campaigns max-w-[1440px] mx-auto mt-20">
+        <h2 class="text-3xl text-[#1F2937] font-bold text-center mb-10">About the Campaign</h2>
+
+        <div class="campaign-details flex flex-row justify-center items-center gap-10">
+            <div class="left-campaign flex-1">
+                <img class="w-full" src="images/about.png" alt="About Image">
+            </div>
+
+            <div class="right-campaign flex-1">
+                <p class="text-[#1F2937] text-lg">Green Earth is a global tree plantation initiative dedicated to fighting climate change. Since our start, we’ve planted over 500,000 trees worldwide. By joining our campaign, you help restore forests, create habitats for wildlife, and combat global warming.</p>
+                <ul class="list-disc ml-7 text-[#1F2937] text-lg mt-4">
+                    <li >Restoration of natural habitats</li>
+                    <li>Improvement of air quality</li>
+                    <li>Support for local communities</li>
+                </ul>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section class="our-impact bg-[#CFF0DC] mt-20 py-20 text-center">
+        <h2 class="text-3xl text-[#1F2937] font-bold text-center mb-10">Our Impact</h2>
+
+        <div class="all-items flex flex-row justify-center items-center gap-10">
+            <div class="single-item bg-white shadow-sm h-[170px] w-[450px] flex flex-col items-center justify-center rounded-xl">
+                <p class="text-[#15803D] font-bold text-3xl">500K+</p>
+                <span class="text-[#1f2937a1] mt-3">Trees Planted</span>
+            </div>
+            <div class="single-item bg-white shadow-sm h-[170px] w-[450px] flex flex-col items-center justify-center rounded-xl">
+                <p class="text-[#15803D] font-bold text-3xl">120+</p>
+                <span class="text-[#1f2937a1] mt-3">Communities Involved</span>
+            </div>
+            <div class="single-item bg-white shadow-sm h-[170px] w-[450px] flex flex-col items-center justify-center rounded-xl">
+                <p class="text-[#15803D] font-bold text-3xl">30+</p>
+                <span class="text-[#1f2937a1] mt-3">Countries Reached</span>
+            </div>
+        </div>
+    </section>
 
     <script src="js/main.js"></script>
 </body>

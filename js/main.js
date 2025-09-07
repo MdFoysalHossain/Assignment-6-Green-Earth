@@ -237,5 +237,5 @@ function loadModal(id){
 
 }
 
-// loadItems();
+loadItems();
 loadCat();

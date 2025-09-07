@@ -5,13 +5,15 @@ function loadCat(){
     fetch(catUtl)
         .then(response => response.json())
         .then(output => {
-            console.log(output.categories);
-            buttonContainer.innerHTML = "";
+            // console.log(output.categories);
+            buttonContainer.innerHTML = `
+                <button id="cat-button-0" onclick="loadItems('all')" class="active font-light text-[#1F2937] hover:cursor-pointer w-[200px] text-left p-1.5 rounded-md hover:bg-[#15803D] hover:text-white active:bg-[#15803D]">All Trees</button>
+            `;
 
             for(let i = 0; i < output.categories.length; i++){
-                console.log(output.categories[i].category_name)
+                // console.log(output.categories[i].category_name)
                 buttonContainer.innerHTML += `
-                    <button onclick="chosenCat('${output.categories[i].category_name}')" class="font-light text-[#1F2937] hover:cursor-pointer w-[200px] text-left p-1.5 rounded-md hover:bg-[#15803D] hover:text-white active:bg-[#15803D]">${output.categories[i].category_name}</button>
+                    <button id="cat-button-${output.categories[i].id}" onclick="chosenCat('${output.categories[i].category_name}')" class="font-light text-[#1F2937] hover:cursor-pointer w-[200px] text-left p-1.5 rounded-md hover:bg-[#15803D] hover:text-white active:bg-[#15803D]">${output.categories[i].category_name}</button>
                 `;
 
             }
@@ -20,20 +22,84 @@ function loadCat(){
 
 
 function chosenCat(cat){
-    console.log(cat)
     const itemsUrl = "https://openapi.programming-hero.com/api/plants";
     let itemsContainer = document.getElementById("items-container");
 
     fetch(itemsUrl)
         .then(response => response.json())
         .then(output => {
-            console.log(output.plants);
+            itemsContainer.innerHTML = "";
+
+            for(let i = 0; i < output.plants.length; i++){
+
+                if(output.plants[i].category === cat)
+                itemsContainer.innerHTML += `
+                    <div class="card bg-base-100 w-96 max-h-[450px] pt-4 shadow-sm">
+                        <figure class="p-4 mb-2 max-h-[200px]">
+                            <img class="rounded-lg overflow-hidden"
+                            src="${output.plants[i].image}"
+                            alt="${output.plants[i].name} Image" />
+                        </figure>
+                        <div class="px-5">
+                            <h2 onclick="loadModal(${output.plants[i].id})" class="card-title text-lg">${output.plants[i].name}</h2>
+                            <span class="text-sm">${output.plants[i].description}</span>
+                            <div class="flex flex-row justify-between items-center w-full mt-4">
+                                <span class="bg-[#DCFCE7] text-[#15803D] inline-block px-3 py-1 rounded-2xl">${output.plants[i].category}</span>
+                                <p class="text-right">৳${output.plants[i].price}</p>
+                            </div>
+                            <button class="btn bg-[#15803D] rounded-3xl text-white my-3 w-full text-center py-5">Add to Cart</button>
+                        </div>
+                    </div>
+                `;
+            }
+        })
+
+        
+        removeActive();
+        makeBtnActive(cat);
+
+}
+
+function makeBtnActive(buttonName){
+    // let activeButton = document.getElementById(buttonName);
+    const catUtl = "https://openapi.programming-hero.com/api/categories";
+
+    console.log(buttonName);
+    if(buttonName === "all"){
+        let activeTheBtn = document.getElementById('cat-button-0')
+        activeTheBtn.classList.add("active");
+    }else{
+
+        fetch(catUtl)
+            .then(response => response.json())
+            .then(output => {
+                for(let i = 0; i < output.categories.length; i++)
+                    if(output.categories[i].category_name === buttonName){
+                        // console.log(buttonName)
+                        let catButton = document.getElementById(`cat-button-${i+1}`);
+                        catButton.classList.add("active");
+
+                    } else{
+                        console.log("Others");
+                    }
+               
+            })
+    }
+}
+
+
+function loadItems(buttonName){
+    const itemsUrl = "https://openapi.programming-hero.com/api/plants";
+    let itemsContainer = document.getElementById("items-container");
+
+    fetch(itemsUrl)
+        .then(response => response.json())
+        .then(output => {
+            // console.log(output.plants);
             itemsContainer.innerHTML = "";
 
             for(let i = 0; i < output.plants.length; i++){
                 // console.log(output.plants[i].name)
-
-                if(output.plants[i].category === cat)
                 itemsContainer.innerHTML += `
                     <div class="card bg-base-100 w-96  pt-4 shadow-sm">
                         <figure class="p-4 mb-2 max-h-[200px]">
@@ -52,48 +118,21 @@ function chosenCat(cat){
                         </div>
                     </div>
                 `;
-
-
             }
         })
+    
+    removeActive();
+    makeBtnActive(buttonName);
+
 }
 
-
-function loadItems(){
-    const itemsUrl = "https://openapi.programming-hero.com/api/plants";
-    let itemsContainer = document.getElementById("items-container");
-
-    fetch(itemsUrl)
-        .then(response => response.json())
-        .then(output => {
-            console.log(output.plants);
-            itemsContainer.innerHTML = "";
-
-            for(let i = 0; i < output.plants.length; i++){
-                console.log(output.plants[i].name)
-                itemsContainer.innerHTML += `
-                    <div class="card bg-base-100 w-96  pt-4 shadow-sm">
-                        <figure class="p-4 mb-2 max-h-[200px]">
-                            <img class="rounded-lg overflow-hidden"
-                            src="${output.plants[i].image}"
-                            alt="${output.plants[i].name} Image" />
-                        </figure>
-                        <div class="px-5">
-                            <h2 onclick="loadModal(${output.plants[i].id})" class="card-title text-lg">${output.plants[i].name}</h2>
-                            <span class="text-sm">${output.plants[i].description}</span>
-                            <div class="flex flex-row justify-between items-center w-full mt-4">
-                                <span class="bg-[#DCFCE7] text-[#15803D] inline-block px-3 py-1 rounded-2xl">${output.plants[i].category}</span>
-                                <p class="text-right">৳${output.plants[i].price}</p>
-                            </div>
-                            <button class="btn bg-[#15803D] rounded-3xl text-white my-3 w-full text-center py-5">Add to Cart</button>
-                        </div>
-                    </div>
-                `;
-
-
+function removeActive(){
+    for (let i = 0; i <= 11; i++) {
+            let catButton = document.getElementById(`cat-button-${i}`);
+            if (catButton) {  
+                catButton.classList.remove("active");
             }
-        })
-
+        }
 }
 
 function loadModal(id){

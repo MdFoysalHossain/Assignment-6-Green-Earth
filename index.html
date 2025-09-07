@@ -104,10 +104,27 @@
             </div>
 
 
-            <div class="shop-catagories">
-                <h3 class="text-xl text-[#1F2937] font-semibold mb-3.5">Categories</h3>
-                <div id="categories-btn2" class=" flex flex-col items-start gap-2">
-                    <!-- <button class="font-light text-[#1F2937] hover:cursor-pointer w-[200px] text-left p-1.5 rounded-md hover:bg-[#15803D] hover:text-white">All Trees</button> -->
+            <div class="shop-catagories bg-white flex-1 rounded-xl p-4">
+                <h3 class="text-xl text-[#1F2937] font-semibold mb-3.5">Your Cart</h3>
+                <div id="cart-details" class=" flex flex-col items-start gap-2">
+                    <!-- <div class="single-cart w-full flex flex-row justify-between rounded-lg items-center bg-[#F0FDF4] px-5 py-3">
+                        <div class="left flex-1">
+                            <h3 class="font-semibold ">Manga Tree</h3>
+                            <p class="text-[#1f29378a]">৳500 x 1</p>
+                        </div>
+                        <div class="right text-right text-[#1f29378a]">
+                            <button class="hover:cursor-pointer"><i class="fa-solid fa-xmark text-sm"></i></button>
+                        </div>
+                    </div> -->
+
+                    
+                </div>
+                <div class="total-cart">
+                    <div class="line h-[1.5px] mt-5 w-full bg-gray-200"></div>
+                    <div class="details flex flex-row justify-between items-center mt-2">
+                        <p>Total: </p>
+                        <p id="total-cart-amount">৳0</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -117,21 +134,7 @@
             <!-- Open the modal using ID.showModal() method -->
             <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
             <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
-                <div class="modal-box">
-                    <figure class="p-4 mb-2 max-h-[400px] flex justify-center items-center overflow-hidden">
-                        <img class="" src="https://i.ibb.co.com/cSQdg7tf/mango-min.jpg" alt="Shoes" />
-                    </figure>
-                    <h3 id="modal-head" class="font-bold text-2xl">Mango Tree</h3>
-                    <p id="modal-cat">Catagory: Tree</p>
-                    <p id="modal-price">Price: 1000</p>
-                    <p id="modal-des" class="py-4">A fast-growing tropical tree that produces delicious, juicy mangoes during summer. Its dense green canopy offers shade, while its sweet fruits are rich in vitamins and minerals.</p>
-                    <div class="modal-action">
-                        <form method="dialog">
-                            <!-- if there is a button in form, it will close the modal -->
-                            <button class="btn">Close</button>
-                        </form>
-                    </div>
-                </div>
+
             </dialog>
         </div>
         

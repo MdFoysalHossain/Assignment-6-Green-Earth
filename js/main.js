@@ -1,3 +1,16 @@
+
+let currentCurtAmount = 0;
+
+
+
+
+
+
+
+
+
+
+
 function loadCat(){
     const catUtl = "https://openapi.programming-hero.com/api/categories";
     let buttonContainer = document.getElementById("categories-btn");
@@ -32,25 +45,26 @@ function chosenCat(cat){
 
             for(let i = 0; i < output.plants.length; i++){
 
-                if(output.plants[i].category === cat)
-                itemsContainer.innerHTML += `
-                    <div class="card bg-base-100 w-96 max-h-[450px] pt-4 shadow-sm">
-                        <figure class="p-4 mb-2 max-h-[200px]">
-                            <img class="rounded-lg overflow-hidden"
-                            src="${output.plants[i].image}"
-                            alt="${output.plants[i].name} Image" />
-                        </figure>
-                        <div class="px-5">
-                            <h2 onclick="loadModal(${output.plants[i].id})" class="card-title text-lg">${output.plants[i].name}</h2>
-                            <span class="text-sm">${output.plants[i].description}</span>
-                            <div class="flex flex-row justify-between items-center w-full mt-4">
-                                <span class="bg-[#DCFCE7] text-[#15803D] inline-block px-3 py-1 rounded-2xl">${output.plants[i].category}</span>
-                                <p class="text-right">৳${output.plants[i].price}</p>
+                if(output.plants[i].category === cat){
+                    itemsContainer.innerHTML += `
+                        <div class="card bg-base-100 w-96 max-h-[400px] pt-4 shadow-sm">
+                            <figure class="p-4 mb-2 max-h-[200px]">
+                                <img class="rounded-lg overflow-hidden"
+                                src="${output.plants[i].image}"
+                                alt="${output.plants[i].name} Image" />
+                            </figure>
+                            <div class="px-5">
+                                <h2 onclick="loadModal(${output.plants[i].id})" class="card-title text-lg">${output.plants[i].name}</h2>
+                                <span class="text-sm">${output.plants[i].description}</span>
+                                <div class="flex flex-row justify-between items-center w-full mt-4">
+                                    <span class="bg-[#DCFCE7] text-[#15803D] inline-block px-3 py-1 rounded-2xl">${output.plants[i].category}</span>
+                                    <p class="text-right">৳${output.plants[i].price}</p>
+                                </div>
+                                <button onclick="addToCart(${output.plants[i].id})" class="btn bg-[#15803D] rounded-3xl text-white my-3 w-full text-center py-5">Add to Cart</button>
                             </div>
-                            <button class="btn bg-[#15803D] rounded-3xl text-white my-3 w-full text-center py-5">Add to Cart</button>
                         </div>
-                    </div>
-                `;
+                    `;
+                }
             }
         })
 
@@ -114,7 +128,7 @@ function loadItems(buttonName){
                                 <span class="bg-[#DCFCE7] text-[#15803D] inline-block px-3 py-1 rounded-2xl">${output.plants[i].category}</span>
                                 <p class="text-right">৳${output.plants[i].price}</p>
                             </div>
-                            <button class="btn bg-[#15803D] rounded-3xl text-white my-3 w-full text-center py-5">Add to Cart</button>
+                            <button onclick="addToCart(${output.plants[i].id})" class="btn bg-[#15803D] rounded-3xl text-white my-3 w-full text-center py-5">Add to Cart</button>
                         </div>
                     </div>
                 `;
@@ -125,6 +139,80 @@ function loadItems(buttonName){
     makeBtnActive(buttonName);
 
 }
+
+
+function addToCart(cartId){
+    const itemsUrl = "https://openapi.programming-hero.com/api/plants";
+    let cartContainer = document.getElementById("cart-details");
+    let totalCart = document.getElementById("total-cart-amount");
+    console.log("Cart Id:", cartId);
+    fetch(itemsUrl)
+        .then(response => response.json())
+        .then(output => {
+            for(let i = 0; i < output.plants.length; i++){
+                // console.log("current id:", output.plants[i])
+                if(output.plants[i].id === cartId){
+                    // console.log(output.plants[i].name , "\n", output.plants[i].price)
+                    cartContainer.innerHTML += `
+                        <div id="item-${cartId}" class="single-cart w-full flex flex-row justify-between rounded-lg items-center bg-[#F0FDF4] px-5 py-3">
+                            <div class="left flex-1">
+                                <h3 class="font-semibold ">${output.plants[i].name}</h3>
+                                <p class="text-[#1f29378a]">৳${output.plants[i].price} <i class="fa-solid fa-xmark text-sm"></i> 1 </p>
+                            </div>
+                            <div class="right text-right text-[#1f29378a]">
+                                <button onclick="removeItem(${cartId})" class="hover:cursor-pointer"><i class="fa-solid fa-xmark text-sm"></i></button>
+                            </div>
+                        </div>
+                    `;
+
+                    currentCurtAmount += output.plants[i].price;
+
+                    totalCart.innerText = `৳${currentCurtAmount}`;
+
+                }
+
+            }
+        })
+}
+
+
+function removeItem(cartId){
+    const itemsUrl = "https://openapi.programming-hero.com/api/plants";
+    let cartContainer = document.getElementById("cart-details");
+    let totalCart = document.getElementById("total-cart-amount");
+    // console.log("Cart Id:", cartId);
+
+    fetch(itemsUrl)
+        .then(response => response.json())
+        .then(output => {
+            let deleteItem = document.getElementById(`item-${cartId}`)
+            deleteItem.remove();
+            for(let i = 0; i < output.plants.length; i++){
+                // console.log("current id:", output.plants[i])
+                if(output.plants[i].id === cartId){
+                    // console.log(output.plants[i].name , "\n", output.plants[i].price)
+                    // cartContainer.innerHTML += `
+                    //     <div class="single-cart w-full flex flex-row justify-between rounded-lg items-center bg-[#F0FDF4] px-5 py-3">
+                    //         <div class="left flex-1">
+                    //             <h3 class="font-semibold ">${output.plants[i].name}</h3>
+                    //             <p class="text-[#1f29378a]">৳${output.plants[i].price} <i class="fa-solid fa-xmark text-sm"></i> 1 </p>
+                    //         </div>
+                    //         <div class="right text-right text-[#1f29378a]">
+                    //             <button onclick="removeItem(${cartId})" class="hover:cursor-pointer"><i class="fa-solid fa-xmark text-sm"></i></button>
+                    //         </div>
+                    //     </div>
+                    // `;
+
+                    currentCurtAmount -= output.plants[i].price;
+
+                    totalCart.innerText = `৳${currentCurtAmount}`;
+
+                }
+
+            }
+        })
+}
+
 
 function removeActive(){
     for (let i = 0; i <= 11; i++) {

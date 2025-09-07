@@ -70,7 +70,7 @@
     </section>
 
     <section class="shop-area mt-20 px-10">
-        <h2 class="text-3xl text-[#1F2937] font-bold text-center">Choose Your Trees</h2>
+        <h2 class="text-3xl text-[#1F2937] font-semibold text-center">Choose Your Trees</h2>
 
         <div class="shop-options flex flex-row gap-10 mt-5 justify-center">
             <div class="shop-catagories">
@@ -139,7 +139,7 @@
     </section>
 
     <section class="campaigns max-w-[1440px] mx-auto mt-20">
-        <h2 class="text-3xl text-[#1F2937] font-bold text-center mb-10">About the Campaign</h2>
+        <h2 class="text-3xl text-[#1F2937] font-semibold text-center mb-10">About the Campaign</h2>
 
         <div class="campaign-details flex flex-row justify-center items-center gap-10">
             <div class="left-campaign flex-1">
@@ -175,6 +175,27 @@
                 <p class="text-[#15803D] font-bold text-3xl">30+</p>
                 <span class="text-[#1f2937a1] mt-3">Countries Reached</span>
             </div>
+        </div>
+    </section>
+
+    <section class="plant-tree bg-[#166534] py-20">
+        <h2 class="text-3xl text-white font-semibold text-center mb-10">Plant a Tree Today</h2>
+
+        <div class="form-container">
+            <form action="" class="flex flex-col justify-center items-center gap-5 bg-[#15803D] w-[450px] p-8 mx-auto rounded-xl">
+                <input type="text" placeholder="Your Name" class="input w-full" />
+                <input type="email" placeholder="Your Email Address" class="input w-full" />
+                <input type="text" class="input w-full" placeholder="Number of Trees" list="trees-number" />
+                <datalist id="trees-number" class="">
+                    <option value="1 Tree - $5"></option>
+                    <option value="2 Tree - $10"></option>
+                    <option value="5 Tree - $25"></option>
+                    <option value="10 Tree - $50"></option>
+                    <option value="20 Tree - $100"></option>
+                </datalist>
+
+                <button class="btn w-full rounded-3xl bg-[#FACC15] text-[#15803D] border-none shadow-none">Donate Now</button>
+            </form>
         </div>
     </section>
 

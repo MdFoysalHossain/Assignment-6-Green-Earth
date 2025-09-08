@@ -143,7 +143,7 @@ function loadItems(buttonName){
 
 function addToCart(cartId){
     const itemsUrl = "https://openapi.programming-hero.com/api/plants";
-    let cartContainer = document.getElementById("all-products");
+    let cartContainer = document.querySelector("#cart-details");
     let totalCart = document.getElementById("total-cart-amount");
     console.log("Cart Id:", cartId);
     fetch(itemsUrl)
@@ -172,6 +172,12 @@ function addToCart(cartId){
             }
         })
 }
+
+
+
+
+
+
 
 function loading(check){
     let loader = document.getElementById("spinner");

@@ -19,12 +19,12 @@ function loadCat(){
         .then(response => response.json())
         .then(output => {
             buttonContainer.innerHTML = `
-                <button id="cat-button-0" onclick="loadItems('all')" class="active font-light text-[#1F2937] hover:cursor-pointer w-[200px] text-left p-1.5 rounded-md hover:bg-[#15803D] hover:text-white active:bg-[#15803D]">All Trees</button>
+                <button id="cat-button-0" onclick="loadItems('all')" class="active font-light text-[#1F2937] hover:cursor-pointer w-[150px] 2xl:w-[200px] xl:w-[200px] lg:w-[200px] md:w-[200px] text-left p-1.5 rounded-md hover:bg-[#15803D] hover:text-white active:bg-[#15803D]">All Trees</button>
             `;
 
             for(let i = 0; i < output.categories.length; i++){
                 buttonContainer.innerHTML += `
-                    <button id="cat-button-${output.categories[i].id}" onclick="chosenCat('${output.categories[i].category_name}')" class="font-light text-[#1F2937] hover:cursor-pointer w-[200px] text-left p-1.5 rounded-md hover:bg-[#15803D] hover:text-white active:bg-[#15803D]">${output.categories[i].category_name}</button>
+                    <button id="cat-button-${output.categories[i].id}" onclick="chosenCat('${output.categories[i].category_name}')" class="font-light text-[#1F2937] hover:cursor-pointer w-[150px] 2xl:w-[200px] xl:w-[200px] lg:w-[200px] md:w-[200px]  text-left p-1.5 rounded-md hover:bg-[#15803D] hover:text-white active:bg-[#15803D]">${output.categories[i].category_name}</button>
                 `;
 
             }
@@ -45,7 +45,11 @@ function chosenCat(cat){
 
                 if(output.plants[i].category === cat){
                     itemsContainer.innerHTML += `
-                        <div class="card bg-base-100 w-96 max-h-[400px] pt-4 shadow-sm">
+                        <div class="card bg-base-100 w-[335px]  pt-4 shadow-sm
+                        2xl:w-96
+                        xl:w-96
+                        lg:w-96
+                        md:w-96">
                             <figure class="p-4 mb-2 max-h-[200px]">
                                 <img class="rounded-lg overflow-hidden"
                                 src="${output.plants[i].image}"
@@ -109,7 +113,12 @@ function loadItems(buttonName){
 
             for(let i = 0; i < output.plants.length; i++){
                 itemsContainer.innerHTML += `
-                    <div class="card bg-base-100 w-96  pt-4 shadow-sm">
+                    <div class="card bg-base-100 w-[335px]  pt-4 shadow-sm
+                        2xl:w-96
+                        xl:w-96
+                        lg:w-96
+                        md:w-96
+                    ">
                         <figure class="p-4 mb-2 max-h-[200px]">
                             <img class="rounded-lg overflow-hidden"
                             src="${output.plants[i].image}"

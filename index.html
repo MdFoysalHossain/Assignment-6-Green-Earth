@@ -59,7 +59,7 @@
         <div class="banner-left hidden  2xl:inline-block">
             <img src="images/hero-leaf1.png" alt="Leaf Image">
         </div>
-        <div class="banner-center flex flex-col justify-center items-center gap-6 flex-1 ">
+        <div class="banner-center flex flex-col justify-center items-center gap-6 flex-1 text-center">
             <h1 class="text-5xl font-bold text-[#1F2937]">Plant a Tree, Grow a Future</h1>
             <p class="text-sm text-[#1F2937] font-normal">Join our mission to plant 1 million trees and make the Earth greener for future generations.</p>
             <a class="btn bg-[#FACC15] text-[#15803D] rounded-3xl border-none shadow-none">Get Involved</a>
@@ -69,13 +69,24 @@
         </div>
     </section>
 
-    <section class="shop-area mt-20 px-10">
+    <section class="shop-area mt-20">
         <h2 class="text-3xl text-[#1F2937] font-semibold text-center">Choose Your Trees</h2>
 
-        <div class="shop-options flex flex-col 2xl:flex-row gap-10 mt-5 justify-center">
+        <div class="shop-options gap-10 mt-5 justify-center
+            2xl:flex 2xl:flex-row 
+            xl:flex xl:flex-row 
+            lg:flex lg:flex-row 
+            md:flex md:flex-col
+        ">
             <div class="shop-catagories order-1">
-                <h3 class="text-xl text-[#1F2937] font-semibold mb-3.5">Categories</h3>
-                <div id="categories-btn" class=" flex flex-col w-[210px] items-start gap-2">
+                <h3 class="text-xl text-[#1F2937] font-semibold mb-3.5 ml-2 ">Categories</h3>
+                <div id="categories-btn" class="
+                    2xl:w-[210px] 2xl:flex 2xl:flex-col 2xl:gap-2 
+                    xl:w-[210px] xl:flex xl:flex-col xl:gap-2
+                    lg:w-[210px] lg:flex lg:flex-col lg:gap-2
+                    md:grid md:grid-cols-3 md:gap-5 md:place-items-center md:justify-center md:items-center
+                    grid grid-cols-2 gap-3 place-items-center mb-5
+                ">
                     <!-- <button class="font-light text-[#1F2937] hover:cursor-pointer w-[200px] text-left p-1.5 rounded-md hover:bg-[#15803D] hover:text-white">All Trees</button> -->
 
                     <button id="cat-button-0" onclick="loadItems()" class="font-light text-[#1F2937] hover:cursor-pointer w-[200px] text-left p-1.5 rounded-md hover:bg-[#15803D] hover:text-white active:bg-[#15803D]">All Trees</button>
@@ -83,8 +94,48 @@
 
             </div>
 
-            <div id="items-container" class="shop-item order-3 grid grid-cols-3 gap-5
-                2xl:order-2 xl:order-2 lg:order-2
+            <div class="cart-detils bg-white w-[350px] rounded-xl p-4 mx-auto mb-5
+            2xl:order-3 2xl:w-[250px] 2xl:place-content-start 2xl:mx-0
+            xl:order-3 xl:w-[250px] xl:place-content-start xl:mx-0
+            lg:order-3 lg:w-[250px] lg:place-content-start lg:mx-0
+            md:order-2 md:w-[450px] md:place-content-start md:mx-auto
+            sm:order-2 sm:place-content-center sm:justify-start">
+                <h3 class="text-xl text-[#1F2937] font-semibold mb-3.5">Your Cart</h3>
+                <div id="cart-details" class=" flex flex-col gap-2
+                2xl:flex 2xl:flex-col 2xl:items-start 2xl:gap-2 
+                xl:flex xl:flex-col xl:items-start xl:gap-2 
+                lg:flex lg:flex-col lg:items-start lg:gap-2 
+                md:grid md:grid-cols-2 md:gap-2 md:items-start
+                sm:flex sm:flex-col sm:items-start sm:gap-2 ">
+                    <!-- <div class="single-cart w-full flex flex-row justify-between rounded-lg items-center bg-[#F0FDF4] px-5 py-3">
+                        <div class="left flex-1">
+                            <h3 class="font-semibold ">Manga Tree</h3>
+                            <p class="text-[#1f29378a]">৳500 x 1</p>
+                        </div>
+                        <div class="right text-right text-[#1f29378a]">
+                            <button class="hover:cursor-pointer"><i class="fa-solid fa-xmark text-sm"></i></button>
+                        </div>
+                    </div> -->
+
+                    
+                </div>
+
+                <!-- <div class="total-cart h-fit  2xl:order-3 xl:order-3 lg:order-3"> -->
+                <div class="total-cart h-fit ">
+                    <div class="line h-[1.5px] mt-5 w-full bg-gray-200"></div>
+                    <div class="details flex flex-row justify-between items-center mt-2">
+                        <p>Total: </p>
+                        <p id="total-cart-amount">৳0</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="items-container" class="shop-item order-3 grid gap-5 place-content-center
+                2xl:grid 2xl:grid-cols-3 2xl:order-2 2xl:justify-start 2xl:gap-5
+                xl:grid xl:grid-cols-2 xl:order-2 xl:gap-5
+                lg:grid lg:grid-cols-1 lg:order-2 lg:gap-5
+                md:grid md:grid-cols-1 md:col-span-2 md:justify-center md:place-items-center md:gap-5
+                sm:grid sm:grid-cols-1 sm:place-items-center sm:justify-center sm:place-content-center sm:gap-5 sm:order-3
             ">
                 <!-- <div class="card bg-base-100 w-96 h-[450px] shadow-sm">
                     <figure class="p-4 ">
@@ -106,30 +157,7 @@
             </div>
 
 
-            <div class="cart-detils order-2 bg-white w-[250px] rounded-xl p-4">
-                <h3 class="text-xl text-[#1F2937] font-semibold mb-3.5">Your Cart</h3>
-                <div id="cart-details" class=" flex flex-col items-start gap-2">
-                    <!-- <div class="single-cart w-full flex flex-row justify-between rounded-lg items-center bg-[#F0FDF4] px-5 py-3">
-                        <div class="left flex-1">
-                            <h3 class="font-semibold ">Manga Tree</h3>
-                            <p class="text-[#1f29378a]">৳500 x 1</p>
-                        </div>
-                        <div class="right text-right text-[#1f29378a]">
-                            <button class="hover:cursor-pointer"><i class="fa-solid fa-xmark text-sm"></i></button>
-                        </div>
-                    </div> -->
-
-                    
-                </div>
-
-                <div class="total-cart h-fit  2xl:order-3 xl:order-3 lg:order-3">
-                    <div class="line h-[1.5px] mt-5 w-full bg-gray-200"></div>
-                    <div class="details flex flex-row justify-between items-center mt-2">
-                        <p>Total: </p>
-                        <p id="total-cart-amount">৳0</p>
-                    </div>
-                </div>
-            </div>
+            
         </div>
 
 
@@ -185,7 +213,11 @@
         <h2 class="text-3xl text-white font-semibold text-center mb-10">Plant a Tree Today</h2>
 
         <div class="form-container">
-            <form action="" class="flex flex-col justify-center items-center gap-5 bg-[#15803D] w-[450px] p-8 mx-auto rounded-xl">
+            <form action="" class="flex flex-col justify-center items-center gap-5 bg-[#15803D] w-[350px] p-8 mx-auto rounded-xl
+            2xl:w-[450px]
+            xl:w-[450px]
+            lg:w-[450px]
+            ">
                 <input type="text" placeholder="Your Name" class="input w-full" />
                 <input type="email" placeholder="Your Email Address" class="input w-full" />
                 <input type="text" class="input w-full" placeholder="Number of Trees" list="trees-number" />

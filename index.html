@@ -89,7 +89,7 @@
                 ">
                     <!-- <button class="font-light text-[#1F2937] hover:cursor-pointer w-[200px] text-left p-1.5 rounded-md hover:bg-[#15803D] hover:text-white">All Trees</button> -->
 
-                    <button id="cat-button-0" onclick="loadItems()" class="font-light text-[#1F2937] hover:cursor-pointer w-[200px] text-left p-1.5 rounded-md hover:bg-[#15803D] hover:text-white active:bg-[#15803D]">All Trees</button>
+                    <!-- <button id="cat-button-0" onclick="loadItems()" class="font-light text-[#1F2937] hover:cursor-pointer w-[200px] text-left p-1.5 rounded-md hover:bg-[#15803D] hover:text-white active:bg-[#15803D]">All Trees</button> -->
                 </div>
 
             </div>
@@ -172,7 +172,10 @@
     <section class="campaigns max-w-[1440px] mx-auto mt-20">
         <h2 class="text-3xl text-[#1F2937] font-semibold text-center mb-10">About the Campaign</h2>
 
-        <div class="campaign-details flex flex-row justify-center items-center gap-10">
+        <div class="campaign-details flex flex-col justify-center items-center gap-10 p-3
+        2xl:flex-row 
+        xl:flex-row 
+        lg:flex-row ">
             <div class="left-campaign flex-1">
                 <img class="w-full" src="images/about.png" alt="About Image">
             </div>
@@ -190,19 +193,19 @@
     </section>
 
 
-    <section class="our-impact bg-[#CFF0DC] mt-20 py-20 text-center">
+    <section class="our-impact bg-[#CFF0DC] mt-20 p-10 text-center">
         <h2 class="text-3xl text-[#1F2937] font-bold text-center mb-10">Our Impact</h2>
 
-        <div class="all-items flex flex-row justify-center items-center gap-10">
-            <div class="single-item bg-white shadow-sm h-[170px] w-[450px] flex flex-col items-center justify-center rounded-xl">
+        <div class="all-items flex 2xl:flex-row xl:flex-row lg:flex-row md:flex-row justify-center items-center gap-10 flex-col">
+            <div class="single-item bg-white shadow-sm h-[170px] w-[350px] 2xl:w-[450px] xl:w-[450px] lg:w-[450px] md:w-[450px] flex flex-col items-center justify-center rounded-xl">
                 <p class="text-[#15803D] font-bold text-3xl">500K+</p>
                 <span class="text-[#1f2937a1] mt-3">Trees Planted</span>
             </div>
-            <div class="single-item bg-white shadow-sm h-[170px] w-[450px] flex flex-col items-center justify-center rounded-xl">
+            <div class="single-item bg-white shadow-sm h-[170px] w-[350px] 2xl:w-[450px] xl:w-[450px] lg:w-[450px] md:w-[450px] flex flex-col items-center justify-center rounded-xl">
                 <p class="text-[#15803D] font-bold text-3xl">120+</p>
                 <span class="text-[#1f2937a1] mt-3">Communities Involved</span>
             </div>
-            <div class="single-item bg-white shadow-sm h-[170px] w-[450px] flex flex-col items-center justify-center rounded-xl">
+            <div class="single-item bg-white shadow-sm h-[170px] w-[350px] 2xl:w-[450px] xl:w-[450px] lg:w-[450px] md:w-[450px] flex flex-col items-center justify-center rounded-xl">
                 <p class="text-[#15803D] font-bold text-3xl">30+</p>
                 <span class="text-[#1f2937a1] mt-3">Countries Reached</span>
             </div>

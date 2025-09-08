@@ -5,12 +5,6 @@ let currentCurtAmount = 0;
 
 
 
-
-
-
-
-
-
 function loadCat(){
     const catUtl = "https://openapi.programming-hero.com/api/categories";
     let buttonContainer = document.getElementById("categories-btn");
@@ -73,6 +67,7 @@ function chosenCat(cat){
         
         removeActive();
         makeBtnActive(cat);
+        loading(false);
 
 }
 
@@ -105,6 +100,7 @@ function makeBtnActive(buttonName){
 function loadItems(buttonName){
     const itemsUrl = "https://openapi.programming-hero.com/api/plants";
     let itemsContainer = document.getElementById("items-container");
+
 
     fetch(itemsUrl)
         .then(response => response.json())
@@ -140,13 +136,14 @@ function loadItems(buttonName){
     
     removeActive();
     makeBtnActive(buttonName);
+    loading(true);
 
 }
 
 
 function addToCart(cartId){
     const itemsUrl = "https://openapi.programming-hero.com/api/plants";
-    let cartContainer = document.getElementById("cart-details");
+    let cartContainer = document.getElementById("all-products");
     let totalCart = document.getElementById("total-cart-amount");
     console.log("Cart Id:", cartId);
     fetch(itemsUrl)
@@ -176,10 +173,25 @@ function addToCart(cartId){
         })
 }
 
+function loading(check){
+    let loader = document.getElementById("spinner");
+    let shopAll = document.getElementById("all-products");
+
+    if(check === true){
+        loader.classList.add("hidden")
+        shopAll.classList.remove("hidden")
+    } else{
+        loader.classList.remove("hidden")
+        shopAll.classList.add("hidden")
+    }
+
+}
+
+
 
 function removeItem(cartId){
     const itemsUrl = "https://openapi.programming-hero.com/api/plants";
-    let cartContainer = document.getElementById("cart-details");
+    let cartContainer = document.getElementById("all-products");
     let totalCart = document.getElementById("total-cart-amount");
 
     fetch(itemsUrl)
@@ -246,5 +258,6 @@ function loadModal(id){
 
 }
 
+loading(false);
 loadItems();
 loadCat();

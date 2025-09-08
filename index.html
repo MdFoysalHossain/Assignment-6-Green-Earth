@@ -69,10 +69,14 @@
         </div>
     </section>
 
+    
+
     <section class="shop-area mt-20">
         <h2 class="text-3xl text-[#1F2937] font-semibold text-center">Choose Your Trees</h2>
 
-        <div class="shop-options gap-10 mt-5 justify-center
+        
+
+        <div id="shop-features" class="shop-options gap-10 mt-5 justify-center
             2xl:flex 2xl:flex-row 
             xl:flex xl:flex-row 
             lg:flex lg:flex-row 
@@ -116,8 +120,6 @@
                             <button class="hover:cursor-pointer"><i class="fa-solid fa-xmark text-sm"></i></button>
                         </div>
                     </div> -->
-
-                    
                 </div>
 
                 <!-- <div class="total-cart h-fit  2xl:order-3 xl:order-3 lg:order-3"> -->
@@ -130,13 +132,19 @@
                 </div>
             </div>
 
-            <div id="items-container" class="shop-item order-3 grid gap-5 place-content-center
+            <div id="items-container" class="shop-item order-3 grid items-center gap-5 place-content-center
                 2xl:grid 2xl:grid-cols-3 2xl:order-2 2xl:justify-start 2xl:gap-5
                 xl:grid xl:grid-cols-2 xl:order-2 xl:gap-5
                 lg:grid lg:grid-cols-1 lg:order-2 lg:gap-5
                 md:grid md:grid-cols-1 md:col-span-2 md:justify-center md:place-items-center md:gap-5
                 sm:grid sm:grid-cols-1 sm:place-items-center sm:justify-center sm:place-content-center sm:gap-5 sm:order-3
             ">
+
+                    <div id="spinner" class="w-[500px]  text-center my-20 col-span-3 order-2">
+                        <span class="loading loading-ring loading-xl text-success scale-200"></span>
+                    </div>
+
+                <div id="all-products" class="w-full hidden"></div>
                 <!-- <div class="card bg-base-100 w-96 h-[450px] shadow-sm">
                     <figure class="p-4 ">
                         <img class="rounded-lg"
